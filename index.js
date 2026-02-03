@@ -2,18 +2,22 @@ const text = document.getElementById('taskInput');
 const submit = document.getElementById("addTaskBtn");
 const list = document.getElementById("tasklist");
 
-addButton.onclick = () => {
-  if (todoInput.value.trim() === '') return;
 
-  const li = document.createElement('li');
-  li.innerHTML = `
-    ${todoInput.value}
-    <button>Delete</button>
-  `;
+btn.onclick = function() {
+  const taskText = input.value.trim();
 
-  li.querySelector('button').onclick = () => li.remove();
+  if (taskText !== "") {
+    const li = document.createElement('li');
+    li.textContent = taskText;
 
-  todoList.appendChild(li);
-  todoInput.value = '';
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "Eliminar";
+    deleteBtn.onclick = () => li.remove(); 
+    
+    li.appendChild(deleteBtn);
+    list.appendChild(li);
+    input.value = ""; 
+  } else {
+    alert("¡Escribe algo primero!");
+  }
 };
-
